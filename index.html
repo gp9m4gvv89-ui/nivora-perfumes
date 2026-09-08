@@ -27,7 +27,6 @@
             padding-bottom: 50px;
         }
 
-        /* Top Bar */
         .top-bar {
             background-color: var(--primary-pink);
             color: white;
@@ -38,7 +37,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Header */
         header {
             background-color: #000000;
             padding: 15px 20px;
@@ -72,7 +70,6 @@
             font-weight: 600;
         }
 
-        /* Views management */
         .view {
             display: none;
             padding: 20px;
@@ -84,7 +81,6 @@
             display: block;
         }
 
-        /* Catalog Grid */
         .catalog-title {
             text-align: center;
             margin: 25px 0 15px 0;
@@ -123,7 +119,7 @@
 
         .product-img-container {
             width: 100%;
-            height: 200px;
+            height: 220px;
             background-color: #2a2a2a;
             position: relative;
         }
@@ -168,7 +164,6 @@
             cursor: pointer;
         }
 
-        /* Detail View Styles */
         .back-btn {
             background: none;
             border: none;
@@ -184,7 +179,7 @@
 
         .detail-img {
             width: 100%;
-            height: 320px;
+            height: 380px;
             border-radius: 12px;
             overflow: hidden;
             background-color: #2a2a2a;
@@ -225,6 +220,7 @@
             color: var(--text-muted);
             line-height: 1.5;
             margin-bottom: 10px;
+            white-space: pre-line;
         }
 
         .notes-list {
@@ -242,11 +238,12 @@
         .payment-methods {
             background-color: #1a1a1a;
             border: 1px dashed #444;
-            padding: 10px;
+            padding: 12px;
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
             margin: 15px 0;
+            line-height: 1.4;
         }
 
         .btn-whatsapp-buy {
@@ -291,7 +288,7 @@
             <!-- Producto 1: Liquid Brun -->
             <div class="product-card" onclick="showDetail('liquid-brun')">
                 <div class="product-img-container">
-                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80" alt="Liquid Brun">
+                    <img src="image_16.png" alt="Liquid Brun">
                 </div>
                 <div class="product-info">
                     <div>
@@ -305,7 +302,7 @@
             <!-- Producto 2: Hawas Ice -->
             <div class="product-card" onclick="showDetail('hawas-ice')">
                 <div class="product-img-container">
-                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80" alt="Hawas Ice">
+                    <img src="image_17.png" alt="Hawas Ice">
                 </div>
                 <div class="product-info">
                     <div>
@@ -322,32 +319,38 @@
     <div id="liquid-brun" class="view">
         <button class="back-btn" onclick="showCatalog()">← Volver al catálogo</button>
         <div class="detail-img">
-            <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80" alt="Liquid Brun">
+            <img src="image_16.png" alt="Liquid Brun">
         </div>
         <h1 class="detail-title">Liquid Brun</h1>
         <div class="detail-price">$20.000</div>
         
         <div class="detail-desc">
-            Una fragancia cálida, elegante y envolvente que combina especias, vainilla y maderas para crear un aroma sofisticado y muy adictivo. Un perfume intenso y seductor, ideal para noches, clima fresco o para quienes disfrutan de aromas dulces con un toque refinado.
+            Una fragancia cálida, elegante y envolvente que combina especias, vainilla y maderas para crear un aroma sofisticado y muy adictivo.
         </div>
 
-        <div class="detail-section-title">Notas olfativas destacadas</div>
+        <div class="detail-section-title">✨ Notas olfativas destacadas:</div>
         <ul class="notes-list">
             <li>• <strong>Salida:</strong> canela, bergamota y flor de azahar</li>
             <li>• <strong>Corazón:</strong> vainilla Bourbon y resinas cálidas</li>
-            <li>• <strong>Fondo:</strong> praliné, ambroxan y maderas</li>
+            <li>• <strong>Fondo:</strong> praliné, ambroxan y maderas que aportan profundidad y excelente duración</li>
         </ul>
 
-        <div class="detail-section-title">Importante</div>
+        <div class="detail-desc">
+            Un perfume intenso y seductor, ideal para noches, clima fresco o para quienes disfrutan de aromas dulces con un toque refinado.
+        </div>
+
+        <div class="detail-section-title">Importante:</div>
         <div class="detail-desc">
             Presentación tester, por lo que no incluye empaque original. El contenido y la fragancia son los mismos que la versión comercial.
         </div>
 
         <div class="payment-methods">
-            💳 <strong>Medios de pago:</strong> Efectivo o Transferencia bancaria.
+            💳 <strong>Medios de pago aceptados:</strong><br>
+            • Efectivo<br>
+            • Transferencia bancaria
         </div>
 
-        <a href="https://wa.me/5491130806627?text=¡Hola,%20Nivora!%20Quiero%20comprar%20el%20perfume%20Liquid%20Brun%20($20.000)." class="btn-whatsapp-buy" target="_blank">
+        <a href="https://wa.me/5491130806627?text=¡Hola,%20Nivora!%20Quiero%20comprar%20Liquid%20Brun%20($20.000)." class="btn-whatsapp-buy" target="_blank">
             Consultar / Comprar por WhatsApp
         </a>
     </div>
@@ -356,7 +359,7 @@
     <div id="hawas-ice" class="view">
         <button class="back-btn" onclick="showCatalog()">← Volver al catálogo</button>
         <div class="detail-img">
-            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80" alt="Hawas Ice">
+            <img src="image_17.png" alt="Hawas Ice">
         </div>
         <h1 class="detail-title">Hawas Ice</h1>
         <div class="detail-price">$20.000</div>
@@ -365,7 +368,7 @@
             Rasasi Hawas Ice es una fragancia masculina fresca y moderna, ideal para quienes buscan un aroma limpio, elegante y con gran presencia. Su perfil refrescante y sofisticado la hace perfecta para el uso diario y climas cálidos.
         </div>
 
-        <div class="detail-section-title">Notas olfativas</div>
+        <div class="detail-section-title">Notas olfativas:</div>
         <ul class="notes-list">
             <li>• <strong>Salida:</strong> cítricos frescos y notas acuáticas</li>
             <li>• <strong>Corazón:</strong> acordes aromáticos y especias suaves</li>
@@ -373,10 +376,12 @@
         </ul>
 
         <div class="payment-methods">
-            💳 <strong>Medios de pago:</strong> Efectivo o Transferencia bancaria.
+            💳 <strong>Medios de pago aceptados:</strong><br>
+            • Efectivo<br>
+            • Transferencia bancaria
         </div>
 
-        <a href="https://wa.me/5491130806627?text=¡Hola,%20Nivora!%20Quiero%20comprar%20el%20perfume%20Hawas%20Ice%20($20.000)." class="btn-whatsapp-buy" target="_blank">
+        <a href="https://wa.me/5491130806627?text=¡Hola,%20Nivora!%20Quiero%20comprar%20Hawas%20Ice%20($20.000)." class="btn-whatsapp-buy" target="_blank">
             Consultar / Comprar por WhatsApp
         </a>
     </div>
