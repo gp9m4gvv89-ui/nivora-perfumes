@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIVORA · Perfumes & Fragancias</title>
+  <style>
+    :root {
+      --primary-pink: #f8a5b6;
+      --soft-pink: #fdf0f3;
+      --accent-pink: #e06d88;
+      --dark-bg: #111111;
+      --card-bg: #ffffff;
+      --text-dark: #222222;
+      --text-muted: #666666;
+      --border-color: #eeeeee;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    /* 1. Barra Superior */
+    .top-bar {
+      background-color: var(--primary-pink);
+      color: #111;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-align: center;
+      padding: 8px 12px;
+      text-transform: uppercase;
+    }
+
+    /* Header & Nav */
+    header {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+
+    .logo-circle {
+      width: 36px;
+      height: 36px;
+      background-color: var(--dark-bg);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 1.2rem;
+    }
+
+    /* Buscador inspirado en Iconic */
+    .search-box {
+      padding: 0 16px 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .search-input-wrapper {
+      display: flex;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .search-input-wrapper input {
+      flex: 1;
+      padding: 8px 12px;
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    .search-input-wrapper button {
+      background-color: #888;
+      color: #fff;
+      border: none;
+      padding: 0 16px;
+      cursor: pointer;
+    }
+
+    /* Menú Navegación */
+    nav {
+      border-top: 1px solid var(--border-color);
+      overflow-x: auto;
+      white-space: nowrap;
+      background: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      padding: 10px 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* Hero / Portada */
+    .hero {
+      background-color: var(--soft-pink);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 0.75rem;
+      color: var(--accent-pink);
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #111;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+
+    .btn-dark {
+      background-color: var(--dark-bg);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 2px;
+    }
+
+    /* Catálogo Section */
+    .catalog-section {
+      padding: 30px 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .catalog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+    }
+
+    .catalog-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    .catalog-tag {
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    /* Botones de Categorías */
+    .filter-buttons {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+    }
+
+    .filter-btn {
+      border: 1px solid #ccc;
+      background: #fff;
+      padding: 8px 16px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+
+    /* Grilla de Productos */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      position: relative;
+    }
+
+    .badge-inspired {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2px 8px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      z-index: 2;
+    }
+
+    .product-image-container {
+      background: #f4f4f4;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .product-image-placeholder {
+      width: 60px;
+      height: 90px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .product-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .product-notes {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .product-stars {
+      color: #f5a623;
+      font-size: 0.75rem;
+      margin-bottom: 6px;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .price-transfer {
+      font-size: 0.75rem;
+      color: var(--accent-pink);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .btn-whatsapp {
+      width: 100%;
+      background-color: #25D366;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      text-transform: uppercase;
+      margin-top: auto;
+      border-radius: 2px;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+    }
+
+    /* Sección Negra Inferior */
+    .info-section {
+      background-color: var(--dark-bg);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 40px;
+    }
+
+    .info-section h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .info-section p {
+      font-size: 0.85rem;
+      color: #ccc;
+      max-width: 500px;
+      margin: 0 auto 20px;
+    }
+
+    .btn-pink {
+      background-color: var(--primary-pink);
+      color: #111;
+      border: none;
+      padding: 12px 24px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* Footer */
+    footer {
+      padding: 24px 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+    }
+
+    @media (min-width: 768px) {
+      footer {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. BARRA SUPERIOR ROSA -->
+  <div class="top-bar">
+    NUEVOS INGRESOS · CATÁLOGO EN PREPARACIÓN
+  </div>
+
+  <!-- 2. ENCABEZADO PRINCIPAL -->
+  <header id="top">
+    <div class="header-main">
+      <a href="#top" class="brand-logo">
+        <div class="logo-circle">N</div>
+        <span class="brand-name">NIVORA</span>
+      </a>
+      <div class="header-icons">
+        <span>♡</span>
+        <span>🛍</span>
+      </div>
+    </div>
+
+    <!-- Buscador de productos -->
+    <div class="search-box">
+      <div class="search-input-wrapper">
+        <input type="text" placeholder="¿Qué estás buscando?">
+        <button>🔍</button>
+      </div>
+    </div>
+
+    <!-- 3. MENÚ DE NAVEGACIÓN -->
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#top">INICIO</a></li>
+        <li><a href="#catalogo">CATÁLOGO</a></li>
+        <li><a href="#femeninos">FEMENINOS</a></li>
+        <li><a href="#masculinos">MASCULINOS</a></li>
+        <li><a href="#novedades">NOVEDADES</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 4. PORTADA PRINCIPAL -->
+  <section class="hero">
+    <div class="hero-subtitle">PERFUMES · FRAGANCIAS · ESTILO</div>
+    <h1 class="hero-title">Una fragancia habla de vos.</h1>
+    <p class="hero-desc">Descubrí aromas para cada momento y encontrá esa esencia que se convierte en tu firma.</p>
+    <a href="#catalogo" class="btn-dark">VER CATÁLOGO</a>
+  </section>
+
+  <!-- 5. SECCIÓN DEL CATÁLOGO -->
+  <section class="catalog-section" id="catalogo">
+    <div class="catalog-header">
+      <h2 class="catalog-title">Elegí tu próxima fragancia</h2>
+      <span class="catalog-tag">Catálogo inicial</span>
+    </div>
+
+    <!-- 6. BOTONES DE CATEGORÍAS -->
+    <div class="filter-buttons">
+      <a href="#femeninos" class="filter-btn">FEMENINOS</a>
+      <a href="#masculinos" class="filter-btn">MASCULINOS</a>
+      <a href="#novedades" class="filter-btn">NOVEDADES</a>
+      <a href="#contacto" class="filter-btn">CONSULTAR</a>
+    </div>
+
+    <!-- 7. TARJETAS DE PRODUCTOS -->
+    <div class="product-grid">
+
+      <!-- Tarjeta 1: Femenina -->
+      <div class="product-card" id="femeninos">
+        <span class="badge-inspired">Inspirado en</span>
+        <div class="product-image-container" style="background-color: #fdf0f3;">
+          <div class="product-image-placeholder">N</div>
+        </div>
+        <div class="product-info">
+          <div class="product-name">TESTER - Valentino Donna Born in Roma</div>
+          <div class="product-notes">Floral · Dulce · Sofisticada</div>
+          <div class="product-stars">★★★★★ (0)</div>
+          <div class="product-price">$17.500,00</div>
+          <div class="price-transfer">$14.000,00 con Transferencia</div>
+          <a href="https://wa.me/5491130806627?text=%C2%A1Hola%2C%20Nivora%21%20quiero%20consultar%20por%20el%20perfume..." target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: Femenina -->
+      <div class="product-card">
+        <span class="badge-inspired">Inspirado en</span>
+        <div class="product-image-container" style="background-color: #f7f3ee;">
+          <div class="product-image-placeholder">N</div>
+        </div>
+        <div class="product-info">
+          <div class="product-name">TESTER - Lattafa - Yara</div>
+          <div class="product-notes">Fresca · Floral · Versátil</div>
+          <div class="product-stars">★★★★★ (18)</div>
+          <div class="product-price">$17.500,00</div>
+          <div class="price-transfer">$14.000,00 con Transferencia</div>
+          <a href="https://wa.me/5491130806627?text=%C2%A1Hola%2C%20Nivora%21%20quiero%20consultar%20por%20el%20perfume..." target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3: Masculina -->
+      <div class="product-card" id="masculinos">
+        <span class="badge-inspired">Inspirado en</span>
+        <div class="product-image-container" style="background-color: #f0f0f0;">
+          <div class="product-image-placeholder">N</div>
+        </div>
+        <div class="product-info">
+          <div class="product-name">TESTER - Montale - Arabians Tonka</div>
+          <div class="product-notes">Amaderada · Intensa · Elegante</div>
+          <div class="product-stars">★★★★★ (2)</div>
+          <div class="product-price">$17.500,00</div>
+          <div class="price-transfer">$14.000,00 con Transferencia</div>
+          <a href="https://wa.me/5491130806627?text=%C2%A1Hola%2C%20Nivora%21%20quiero%20consultar%20por%20el%20perfume..." target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Tarjeta 4: Novedades -->
+      <div class="product-card" id="novedades">
+        <span class="badge-inspired">Inspirado en</span>
+        <div class="product-image-container" style="background-color: #f3f0f7;">
+          <div class="product-image-placeholder">N</div>
+        </div>
+        <div class="product-info">
+          <div class="product-name">TESTER - Haramain Amber Oud Dubai</div>
+          <div class="product-notes">Aroma Árabe · Exótico · Unisex</div>
+          <div class="product-stars">★★★★★ (0)</div>
+          <div class="product-price">$17.500,00</div>
+          <div class="price-transfer">$14.000,00 con Transferencia</div>
+          <a href="https://wa.me/5491130806627?text=%C2%A1Hola%2C%20Nivora%21%20quiero%20consultar%20por%20el%20perfume..." target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 9. SECCIÓN NEGRA INFERIOR -->
+  <section class="info-section" id="contacto">
+    <h3>Estamos preparando algo especial.</h3>
+    <p>Muy pronto vas a poder ver todas las fragancias disponibles, sus precios y las novedades de NIVORA. Si buscás un perfume en particular, consultanos.</p>
+    <a href="#top" class="btn-pink">VOLVER AL INICIO</a>
+  </section>
+
+  <!-- 10. PIE DE PÁGINA -->
+  <footer>
+    <div>NIVORA · PERFUMES Y FRAGANCIAS</div>
+    <div>Encontrá tu esencia.</div>
+  </footer>
+
+</body>
+</html>
