@@ -1,557 +1,402 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NIVORA · Perfumes & Fragancias</title>
-  <style>
-    :root {
-      --primary-pink: #f8a5b6;
-      --soft-pink: #fdf0f3;
-      --accent-pink: #e06d88;
-      --dark-bg: #111111;
-      --card-bg: #ffffff;
-      --text-dark: #222222;
-      --text-muted: #666666;
-      --border-color: #eeeeee;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIVORA | Perfumes Exclusivos</title>
+    <style>
+        :root {
+            --primary-pink: #ff69b4;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --text-muted: #b0b0b0;
+            --accent: #d4af37;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    body {
-      background-color: #ffffff;
-      color: var(--text-dark);
-      line-height: 1.5;
-    }
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            padding-bottom: 50px;
+        }
 
-    /* 1. Barra Superior */
-    .top-bar {
-      background-color: var(--primary-pink);
-      color: #111;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-align: center;
-      padding: 8px 12px;
-      text-transform: uppercase;
-    }
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-pink);
+            color: white;
+            text-align: center;
+            padding: 8px 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
 
-    /* Header & Nav */
-    header {
-      position: sticky;
-      top: 0;
-      background: #ffffff;
-      z-index: 1000;
-      border-bottom: 1px solid var(--border-color);
-    }
+        /* Header */
+        header {
+            background-color: #000000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    .header-main {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
 
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text-dark);
-    }
+        .logo span {
+            color: var(--primary-pink);
+        }
 
-    .logo-circle {
-      width: 36px;
-      height: 36px;
-      background-color: var(--dark-bg);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.1rem;
-    }
+        .whatsapp-icon {
+            background-color: #25d366;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
 
-    .brand-name {
-      font-size: 1.3rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
+        /* Views management */
+        .view {
+            display: none;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-    .header-icons {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 1.2rem;
-    }
+        .view.active {
+            display: block;
+        }
 
-    /* Buscador inspirado en Iconic */
-    .search-box {
-      padding: 0 16px 12px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        /* Catalog Grid */
+        .catalog-title {
+            text-align: center;
+            margin: 25px 0 15px 0;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-    .search-input-wrapper {
-      display: flex;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      overflow: hidden;
-    }
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
 
-    .search-input-wrapper input {
-      flex: 1;
-      padding: 8px 12px;
-      border: none;
-      outline: none;
-      font-size: 0.9rem;
-    }
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
-    .search-input-wrapper button {
-      background-color: #888;
-      color: #fff;
-      border: none;
-      padding: 0 16px;
-      cursor: pointer;
-    }
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
 
-    /* Menú Navegación */
-    nav {
-      border-top: 1px solid var(--border-color);
-      overflow-x: auto;
-      white-space: nowrap;
-      background: #fff;
-    }
+        .product-card:active {
+            transform: scale(0.98);
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      padding: 10px 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-      list-style: none;
-    }
+        .product-img-container {
+            width: 100%;
+            height: 200px;
+            background-color: #2a2a2a;
+            position: relative;
+        }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    /* Hero / Portada */
-    .hero {
-      background-color: var(--soft-pink);
-      text-align: center;
-      padding: 40px 20px;
-    }
+        .product-info {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
 
-    .hero-subtitle {
-      font-size: 0.75rem;
-      color: var(--accent-pink);
-      letter-spacing: 2px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
+        .product-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
 
-    .hero-title {
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      color: #111;
-    }
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary-pink);
+            margin-bottom: 10px;
+        }
 
-    .hero-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      max-width: 500px;
-      margin: 0 auto 24px;
-    }
+        .btn-detail {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
 
-    .btn-dark {
-      background-color: var(--dark-bg);
-      color: #fff;
-      border: none;
-      padding: 12px 28px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      border-radius: 2px;
-    }
+        /* Detail View Styles */
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--primary-pink);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
 
-    /* Catálogo Section */
-    .catalog-section {
-      padding: 30px 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        .detail-img {
+            width: 100%;
+            height: 320px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #2a2a2a;
+            margin-bottom: 15px;
+        }
 
-    .catalog-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 20px;
-    }
+        .detail-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    .catalog-title {
-      font-size: 1.5rem;
-      font-weight: 800;
-    }
+        .detail-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
 
-    .catalog-tag {
-      font-size: 0.8rem;
-      color: #888;
-    }
+        .detail-price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-pink);
+            margin-bottom: 15px;
+        }
 
-    /* Botones de Categorías */
-    .filter-buttons {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 12px;
-      margin-bottom: 24px;
-    }
+        .detail-section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 15px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
 
-    .filter-btn {
-      border: 1px solid #ccc;
-      background: #fff;
-      padding: 8px 16px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      cursor: pointer;
-      white-space: nowrap;
-      text-decoration: none;
-      color: var(--text-dark);
-    }
+        .detail-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
 
-    /* Grilla de Productos */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
+        .notes-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
 
-    @media (min-width: 768px) {
-      .product-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
+        .notes-list li {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
 
-    .product-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      padding: 12px;
-      position: relative;
-    }
+        .payment-methods {
+            background-color: #1a1a1a;
+            border: 1px dashed #444;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 15px 0;
+        }
 
-    .badge-inspired {
-      position: absolute;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.95);
-      padding: 2px 8px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      z-index: 2;
-    }
+        .btn-whatsapp-buy {
+            display: block;
+            background-color: #25d366;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
 
-    .product-image-container {
-      background: #f4f4f4;
-      aspect-ratio: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 12px;
-      border-radius: 4px;
-      position: relative;
-    }
-
-    .product-image-placeholder {
-      width: 60px;
-      height: 90px;
-      border: 2px solid #333;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .product-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-name {
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .product-notes {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .product-stars {
-      color: #f5a623;
-      font-size: 0.75rem;
-      margin-bottom: 6px;
-    }
-
-    .product-price {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 2px;
-    }
-
-    .price-transfer {
-      font-size: 0.75rem;
-      color: var(--accent-pink);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .btn-whatsapp {
-      width: 100%;
-      background-color: #25D366;
-      color: #fff;
-      border: none;
-      padding: 10px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      text-transform: uppercase;
-      margin-top: auto;
-      border-radius: 2px;
-      text-decoration: none;
-      text-align: center;
-      display: block;
-    }
-
-    /* Sección Negra Inferior */
-    .info-section {
-      background-color: var(--dark-bg);
-      color: #fff;
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 40px;
-    }
-
-    .info-section h3 {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
-    }
-
-    .info-section p {
-      font-size: 0.85rem;
-      color: #ccc;
-      max-width: 500px;
-      margin: 0 auto 20px;
-    }
-
-    .btn-pink {
-      background-color: var(--primary-pink);
-      color: #111;
-      border: none;
-      padding: 12px 24px;
-      font-weight: 700;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    /* Footer */
-    footer {
-      padding: 24px 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border-color);
-    }
-
-    @media (min-width: 768px) {
-      footer {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
-  </style>
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 40px;
+            border-top: 1px solid #222;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- 1. BARRA SUPERIOR ROSA -->
-  <div class="top-bar">
-    NUEVOS INGRESOS · CATÁLOGO EN PREPARACIÓN
-  </div>
-
-  <!-- 2. ENCABEZADO PRINCIPAL -->
-  <header id="top">
-    <div class="header-main">
-      <a href="#top" class="brand-logo">
-        <div class="logo-circle">N</div>
-        <span class="brand-name">NIVORA</span>
-      </a>
-      <div class="header-icons">
-        <span>♡</span>
-        <span>🛍</span>
-      </div>
+    <div class="top-bar">
+        ✨ ENVÍOS A TODO EL PAÍS | EFECTIVO Y TRANSFERENCIA ✨
     </div>
 
-    <!-- Buscador de productos -->
-    <div class="search-box">
-      <div class="search-input-wrapper">
-        <input type="text" placeholder="¿Qué estás buscando?">
-        <button>🔍</button>
-      </div>
+    <header>
+        <div class="logo">NI<span>V</span>ORA</div>
+        <a href="https://wa.me/5491130806627?text=¡Hola,%20Nivora!%20quiero%20consultar%20por%20los%20perfumes..." class="whatsapp-icon" target="_blank">WhatsApp</a>
+    </header>
+
+    <!-- VISTA 1: CATALOGO GENERAL -->
+    <div id="catalog-view" class="view active">
+        <h2 class="catalog-title">Catálogo Disponible</h2>
+        
+        <div class="products-grid">
+            <!-- Producto 1: Liquid Brun -->
+            <div class="product-card" onclick="showDetail('liquid-brun')">
+                <div class="product-img-container">
+                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80" alt="Liquid Brun">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-name">Liquid Brun</div>
+                        <div class="product-price">$20.000</div>
+                    </div>
+                    <button class="btn-detail">Ver más detalles</button>
+                </div>
+            </div>
+
+            <!-- Producto 2: Hawas Ice -->
+            <div class="product-card" onclick="showDetail('hawas-ice')">
+                <div class="product-img-container">
+                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80" alt="Hawas Ice">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <div class="product-name">Hawas Ice</div>
+                        <div class="product-price">$20.000</div>
+                    </div>
+                    <button class="btn-detail">Ver más detalles</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- 3. MENÚ DE NAVEGACIÓN -->
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#top">INICIO</a></li>
-        <li><a href="#catalogo">CATÁLOGO</a></li>
-        <li><a href="#femeninos">FEMENINOS</a></li>
-        <li><a href="#masculinos">MASCULINOS</a></li>
-        <li><a href="#novedades">NOVEDADES</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- VISTA 2: DETALLE LIQUID BRUN -->
+    <div id="liquid-brun" class="view">
+        <button class="back-btn" onclick="showCatalog()">← Volver al catálogo</button>
+        <div class="detail-img">
+            <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80" alt="Liquid Brun">
+        </div>
+        <h1 class="detail-title">Liquid Brun</h1>
+        <div class="detail-price">$20.000</div>
+        
+        <div class="detail-desc">
+            Una fragancia cálida, elegante y envolvente que combina especias, vainilla y maderas para crear un aroma sofisticado y muy adictivo. Un perfume intenso y seductor, ideal para noches, clima fresco o para quienes disfrutan de aromas dulces con un toque refinado.
+        </div>
 
-  <!-- 4. PORTADA PRINCIPAL -->
-  <section class="hero">
-    <div class="hero-subtitle">PERFUMES · FRAGANCIAS · ESTILO</div>
-    <h1 class="hero-title">Una fragancia habla de vos.</h1>
-    <p class="hero-desc">Descubrí aromas para cada momento y encontrá esa esencia que se convierte en tu firma.</p>
-    <a href="#catalogo" class="btn-dark">VER CATÁLOGO</a>
-  </section>
+        <div class="detail-section-title">Notas olfativas destacadas</div>
+        <ul class="notes-list">
+            <li>• <strong>Salida:</strong> canela, bergamota y flor de azahar</li>
+            <li>• <strong>Corazón:</strong> vainilla Bourbon y resinas cálidas</li>
+            <li>• <strong>Fondo:</strong> praliné, ambroxan y maderas</li>
+        </ul>
 
-  <!-- 5. SECCIÓN DEL CATÁLOGO -->
-  <section class="catalog-section" id="catalogo">
-    <div class="catalog-header">
-      <h2 class="catalog-title">Elegí tu próxima fragancia</h2>
-      <span class="catalog-tag">Catálogo inicial</span>
+        <div class="detail-section-title">Importante</div>
+        <div class="detail-desc">
+            Presentación tester, por lo que no incluye empaque original. El contenido y la fragancia son los mismos que la versión comercial.
+        </div>
+
+        <div class="payment-methods">
+            💳 <strong>Medios de pago:</strong> Efectivo o Transferencia bancaria.
+        </div>
+
+        <a href="https://wa.me/5491130806627?text=¡Hola,%20Nivora!%20Quiero%20comprar%20el%20perfume%20Liquid%20Brun%20($20.000)." class="btn-whatsapp-buy" target="_blank">
+            Consultar / Comprar por WhatsApp
+        </a>
     </div>
 
-    <!-- 6. BOTONES DE CATEGORÍAS -->
-    <div class="filter-buttons">
-      <a href="#femeninos" class="filter-btn">FEMENINOS</a>
-      <a href="#masculinos" class="filter-btn">MASCULINOS</a>
-      <a href="#novedades" class="filter-btn">NOVEDADES</a>
-      <a href="#contacto" class="filter-btn">CONSULTAR</a>
+    <!-- VISTA 3: DETALLE HAWAS ICE -->
+    <div id="hawas-ice" class="view">
+        <button class="back-btn" onclick="showCatalog()">← Volver al catálogo</button>
+        <div class="detail-img">
+            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80" alt="Hawas Ice">
+        </div>
+        <h1 class="detail-title">Hawas Ice</h1>
+        <div class="detail-price">$20.000</div>
+        
+        <div class="detail-desc">
+            Rasasi Hawas Ice es una fragancia masculina fresca y moderna, ideal para quienes buscan un aroma limpio, elegante y con gran presencia. Su perfil refrescante y sofisticado la hace perfecta para el uso diario y climas cálidos.
+        </div>
+
+        <div class="detail-section-title">Notas olfativas</div>
+        <ul class="notes-list">
+            <li>• <strong>Salida:</strong> cítricos frescos y notas acuáticas</li>
+            <li>• <strong>Corazón:</strong> acordes aromáticos y especias suaves</li>
+            <li>• <strong>Fondo:</strong> ámbar, almizcle y maderas</li>
+        </ul>
+
+        <div class="payment-methods">
+            💳 <strong>Medios de pago:</strong> Efectivo o Transferencia bancaria.
+        </div>
+
+        <a href="https://wa.me/5491130806627?text=¡Hola,%20Nivora!%20Quiero%20comprar%20el%20perfume%20Hawas%20Ice%20($20.000)." class="btn-whatsapp-buy" target="_blank">
+            Consultar / Comprar por WhatsApp
+        </a>
     </div>
 
-    <!-- 7. TARJETAS DE PRODUCTOS -->
-    <div class="product-grid">
+    <footer>
+        NIVORA Perfumes © 2026 - Todos los derechos reservados
+    </footer>
 
-      <!-- Tarjeta 1: Femenina -->
-      <div class="product-card" id="femeninos">
-        <span class="badge-inspired">Inspirado en</span>
-        <div class="product-image-container" style="background-color: #fdf0f3;">
-          <div class="product-image-placeholder">N</div>
-        </div>
-        <div class="product-info">
-          <div class="product-name">TESTER - Valentino Donna Born in Roma</div>
-          <div class="product-notes">Floral · Dulce · Sofisticada</div>
-          <div class="product-stars">★★★★★ (0)</div>
-          <div class="product-price">$17.500,00</div>
-          <div class="price-transfer">$14.000,00 con Transferencia</div>
-          <a href="https://wa.me/5491130806627?text=%C2%A1Hola%2C%20Nivora%21%20quiero%20consultar%20por%20el%20perfume..." target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
-        </div>
-      </div>
+    <script>
+        function showDetail(productId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById(productId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
 
-      <!-- Tarjeta 2: Femenina -->
-      <div class="product-card">
-        <span class="badge-inspired">Inspirado en</span>
-        <div class="product-image-container" style="background-color: #f7f3ee;">
-          <div class="product-image-placeholder">N</div>
-        </div>
-        <div class="product-info">
-          <div class="product-name">TESTER - Lattafa - Yara</div>
-          <div class="product-notes">Fresca · Floral · Versátil</div>
-          <div class="product-stars">★★★★★ (18)</div>
-          <div class="product-price">$17.500,00</div>
-          <div class="price-transfer">$14.000,00 con Transferencia</div>
-          <a href="https://wa.me/5491130806627?text=%C2%A1Hola%2C%20Nivora%21%20quiero%20consultar%20por%20el%20perfume..." target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
-        </div>
-      </div>
-
-      <!-- Tarjeta 3: Masculina -->
-      <div class="product-card" id="masculinos">
-        <span class="badge-inspired">Inspirado en</span>
-        <div class="product-image-container" style="background-color: #f0f0f0;">
-          <div class="product-image-placeholder">N</div>
-        </div>
-        <div class="product-info">
-          <div class="product-name">TESTER - Montale - Arabians Tonka</div>
-          <div class="product-notes">Amaderada · Intensa · Elegante</div>
-          <div class="product-stars">★★★★★ (2)</div>
-          <div class="product-price">$17.500,00</div>
-          <div class="price-transfer">$14.000,00 con Transferencia</div>
-          <a href="https://wa.me/5491130806627?text=%C2%A1Hola%2C%20Nivora%21%20quiero%20consultar%20por%20el%20perfume..." target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
-        </div>
-      </div>
-
-      <!-- Tarjeta 4: Novedades -->
-      <div class="product-card" id="novedades">
-        <span class="badge-inspired">Inspirado en</span>
-        <div class="product-image-container" style="background-color: #f3f0f7;">
-          <div class="product-image-placeholder">N</div>
-        </div>
-        <div class="product-info">
-          <div class="product-name">TESTER - Haramain Amber Oud Dubai</div>
-          <div class="product-notes">Aroma Árabe · Exótico · Unisex</div>
-          <div class="product-stars">★★★★★ (0)</div>
-          <div class="product-price">$17.500,00</div>
-          <div class="price-transfer">$14.000,00 con Transferencia</div>
-          <a href="https://wa.me/5491130806627?text=%C2%A1Hola%2C%20Nivora%21%20quiero%20consultar%20por%20el%20perfume..." target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 9. SECCIÓN NEGRA INFERIOR -->
-  <section class="info-section" id="contacto">
-    <h3>Estamos preparando algo especial.</h3>
-    <p>Muy pronto vas a poder ver todas las fragancias disponibles, sus precios y las novedades de NIVORA. Si buscás un perfume en particular, consultanos.</p>
-    <a href="#top" class="btn-pink">VOLVER AL INICIO</a>
-  </section>
-
-  <!-- 10. PIE DE PÁGINA -->
-  <footer>
-    <div>NIVORA · PERFUMES Y FRAGANCIAS</div>
-    <div>Encontrá tu esencia.</div>
-  </footer>
-
+        function showCatalog() {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById('catalog-view').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 </html>
